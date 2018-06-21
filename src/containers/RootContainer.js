@@ -8,6 +8,14 @@ import HomePage from './HomePage'
 import TestPage from './TestPage'
 import TestLocalPage from './TestLocalPage'
 
+export const Routes = () => (
+  <React.Fragment>
+    <Route exact path="/" component={HomePage}/>
+    <Route path="/home/tk/:token" component={HomePage}/>
+    <Route path="/test" component={TestPage}/>
+    <Route path="/test_local" component={TestLocalPage}/>
+  </React.Fragment>
+)
 
 const RootContainer = () => (
   <Router>
@@ -18,10 +26,9 @@ const RootContainer = () => (
         <li><Link to="/test_local">TestLocalPage</Link></li>
       </ul>
       <hr/>
-      <Route exact path="/" component={HomePage}/>
-      <Route path="/test" component={TestPage}/>
-      <Route path="/test_local" component={TestLocalPage}/>
+      <Routes/>
     </div>
   </Router>
 )
-export default RootContainer
+
+export default RootContainer;
