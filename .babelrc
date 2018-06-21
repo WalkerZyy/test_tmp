@@ -10,5 +10,13 @@
            "style": true
          }
        ]
-     ]
+     ],
+    "env": {
+      "test": {
+          "sourceMap": "inline",
+          "plugins": [
+              "transform-es2015-modules-commonjs"
+          ]
+      }
+    }
  }

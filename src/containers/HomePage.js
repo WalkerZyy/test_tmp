@@ -9,13 +9,13 @@ const { Content } = Layout;
 class Home extends React.Component{
     constructor(props){
       super(props);
-      console.log(props);
+      //console.log(props);
       //不那样写就要这样老老实实bind this
       //this._myHandler = this._myHandler.bind(this);
     }
     
     handlerUpdate = () => {
-      console.log(this)
+      //console.log(this)
       this.props.updateNetworkStatus(true);
     }
     render(){
