@@ -2,7 +2,8 @@
 module.exports = {
     preset: 'jest-puppeteer-preset',
     "collectCoverageFrom": [
-        "src/**/*.{js,jsx,mjs}"
+        "src/**/*.{js,jsx,mjs}",
+        "!src/e2e/**"
     ],
     "setupFiles": [
         "<rootDir>/config/polyfills.js",
