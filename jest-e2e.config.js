@@ -5,7 +5,9 @@ module.exports = {
         "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
-        "<rootDir>/config/polyfills.js"
+        "<rootDir>/config/polyfills.js",
+        "jest-localstorage-mock",
+        "<rootDir>/config/setupTest.js"
     ],
     "testMatch": [
         "<rootDir>/src/**/?(*.)(e2etest).{js,jsx,mjs}"
