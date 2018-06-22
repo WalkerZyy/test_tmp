@@ -11,7 +11,17 @@ import { AUTH_TOKEN } from './constants'
 const cache = new InMemoryCache()
 
 // httpLink
-const uri = "https://w5xlvm3vzz.lp.gql.zone/graphql";
+const envs = process.env;
+const { NODE_ENV } = envs;
+
+let uri = '';
+if(NODE_ENV === "development"){
+  // uri = "https://w5xlvm3vzz.lp.gql.zone/graphql";
+  uri = 'http://127.0.0.1:3000/graphql';
+}else{
+  uri = "https://www.xunlugaokao.com/graphql";
+}
+
 const httpLink = new HttpLink({ uri})
 
 // 日常带token
@@ -79,7 +89,7 @@ const stateLink = withClientState({
 const links = [
   errorLink,
   stateLink,
-  httpLink
+  httpLinkAuth
 ]
 
 const client = new ApolloClient({

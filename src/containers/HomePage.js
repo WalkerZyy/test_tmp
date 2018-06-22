@@ -9,6 +9,7 @@ const { Content } = Layout;
 class Home extends React.Component{
     constructor(props){
       super(props);
+      console.log(process.env);
       //console.log(props);
       //不那样写就要这样老老实实bind this
       //this._myHandler = this._myHandler.bind(this);

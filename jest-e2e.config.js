@@ -28,7 +28,7 @@ module.exports = {
         "^@src[/](.+)": "<rootDir>/src/$1",
         "^@less[/](.+)": "<rootDir>/src/less/$1",
         "^@components[/](.+)": "<rootDir>/src/components/$1",
-        "^@container[/](.+)": "<rootDir>/src/container/$1"
+        "^@containers[/](.+)": "<rootDir>/src/containers/$1"
     },
     "moduleFileExtensions": [
         "web.js",

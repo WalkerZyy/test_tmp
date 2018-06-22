@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import gql from "graphql-tag";
+
 import { ApolloProvider } from "react-apollo";
 
 //import logo from './logo.svg';
