@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AsyncComponent = loadComponent => (
+export default (loadComponent) => (
   class AsyncComponent extends React.Component {
     state = {
       Component: null,
@@ -32,5 +32,3 @@ const AsyncComponent = loadComponent => (
     }
   }
 );
-
-export default AsyncComponent;
