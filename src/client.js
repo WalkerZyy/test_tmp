@@ -4,6 +4,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { withClientState } from 'apollo-link-state';
 import { onError } from "apollo-link-error";
+import gql from "graphql-tag";
 // import { RetryLink } from "apollo-link-retry";// 还没装，不知道用不用
 
 import { AUTH_TOKEN } from './constants'
@@ -16,8 +17,8 @@ const { NODE_ENV } = envs;
 
 let uri = '';
 if(NODE_ENV === "development"){
-  // uri = "https://w5xlvm3vzz.lp.gql.zone/graphql";
-  uri = 'http://127.0.0.1:3000/graphql';
+  uri = "https://w5xlvm3vzz.lp.gql.zone/graphql";
+  // uri = 'http://127.0.0.1:3000/graphql';
 }else{
   uri = "https://www.xunlugaokao.com/graphql";
 }
@@ -66,6 +67,31 @@ const stateLink = withClientState({
         cache.writeData({ data });
         return null;
       },
+      updateSth: (_, args, context, info)=>{
+        console.log(_,args,context,info);
+        const { cache } = context;
+        const query = gql`
+          query {
+            sth @client {
+                a
+                b
+            }
+          }
+        `
+        const res = cache.readQuery({ query });
+
+        const sth = {
+            __typename: 'Sth', //最好带上，不然会提示，据说多层的话不带会出现异常
+            a: res.sth.a + 1,
+            b: res.sth.b
+        };
+        const data = {
+          sth
+        };
+        
+        cache.writeData({ data });
+        return sth;
+      }
     },
   },
   // 可以设默认
@@ -74,6 +100,11 @@ const stateLink = withClientState({
       __typename: 'NetworkStatus',
       isConnected: true,
     },
+    sth: {
+      __typename: 'Sth',
+      a: 0,
+      b: 'b'
+    }
   },
 });
 // 默认的cache也可以这样
